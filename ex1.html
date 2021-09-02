@@ -11,38 +11,50 @@
       h2{
         font-size: 30px;
       }
-
     </style>
+    <script>
+    var Links={
+      setColor:function(color){
+      var alist = document.querySelectorAll('a');
+      var i=0;
+      while(i<alist.length){
+        alist[i].style.color= color;
+        i++;
+      }
+    }
+    }
+    var Body= {
+      setColor:function(color){
+        document.querySelector('body').style.color=color;
+      },
+      setBackgroundColor:function(color){
+        document.querySelector('body').style.backgroundColor=color;
+      }
+    }
+
+      function nightdayHander(self){
+        var target = document.querySelector('body');
+        if(self.value==='night'){
+          Body.setBackgroundColor('black');
+          Body.setColor('white');
+          self.value='day';
+
+          Links.setColor('powderblue');
+        }
+        else{
+        Body.setBackgroundColor('white');
+        Body.setColor('black');
+        self.value='night';
+
+        Links.setColor('blue');
+        }
+      }
+    </script>
   </head>
   <body>
     <h1><a href="ex1.html">WEB</a></h1>
 <input type="button" value="night" onclick="
-var target = document.querySelector('body');
-if(this.value==='night'){
-  target.style.backgroundColor='black';
-  target.style.color='white';
-  this.value='day';
-
-  var alist = document.querySelectorAll('a');
-  var i=0;
-  while(i<alist.length){
-    alist[i].style.color='powderblue';
-    i++;
-  }
-
-}
-else{
-target.style.backgroundColor='white';
-target.style.color='black';
-this.value='night';
-
-var alist = document.querySelectorAll('a');
-var i=0;
-while(i<alist.length){
-  alist[i].style.color='blue';
-  i++;
-}
-}
+nightdayHander(this);
 ">
 <ul>
   <li><a href="ex2.html">ex2</a></li>
